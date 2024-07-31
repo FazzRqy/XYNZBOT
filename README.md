@@ -1,3 +1,5 @@
+**Note:** *This script will not work on Termux, you can run it on huggingface, replit or on your PC terminal.*
+
 sudo apt update -y && sudo apt upgrade -y
 
 sudo -i (enter your password)
