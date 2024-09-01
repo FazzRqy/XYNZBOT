@@ -67,13 +67,13 @@ global.APIs = {
 };
 
 global.APIKeys = {
-  arifzyn: process.env.APIKEY || "AR-ijOFnLz2WubH",
+  arifzyn: process.env.APIKEY || "",
   itsrose: process.env.ROSE_KEY || "",
-  lolhuman: "3739aad6ad06d7d171cf369b",
-  xyro: "xyroKey",
+  lolhuman: "",
+  xyro: "",
   nyxs: process.env.APIKEY || "",
   agatz: process.env.APIKEY || "",
-  neoxr: process.env.APIKEY || "RELLZBOT",
+  neoxr: process.env.APIKEY || "",
 };
 
 global.API = (name, path = "/", query = {}, apikeyqueryname) => {

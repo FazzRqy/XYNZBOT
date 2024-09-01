@@ -47,15 +47,13 @@ export default {
                 };
             } else {
 
-            const { title, description, author, numpart, part } = response.data;
+            const { title, description, author } = response.data;
 
             let txt =
             `
 Title: ${title || "Unknown"}
-Author: ${author || "Unknown"}\n
+Author: *${author || "Unknown"}*\n
 Description: ${description || "Unknown"}\n
-numpart: ${numpart || "Unknown"}
-part: ${part || "Unknown"}
             `;
 
             try {

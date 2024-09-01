@@ -16,7 +16,7 @@ export default {
         if (url) {
             m.reply(global.msg.loading)
 
-            const urlApi = `${global.APIs.neoxr + "api/wpread?part=" + url + "&apikey=" + global.APIKeys.neoxr}`;
+            const urlApi = `${global.APIs.neoxr + "/api/wpread?part=" + url + "&apikey=" + global.APIKeys.neoxr}`;
 
             let response;
 
@@ -26,7 +26,7 @@ export default {
                 console.error(error);
             }
 
-            const {thumbnail, title, category, part, reads, by, content} = response.data;
+            const {title, category, part, reads, by, content } = response.data;
 
             let txt =
             `
