@@ -181,6 +181,14 @@ export async function handler(conn, m, chatUpdate) {
       if (quequeIndex !== -1) conn.msgqueque.splice(quequeIndex, 1);
     }
 
+    if (m.message && m.body === `${"@" + global.pairingNumber}`) {
+      m.reply("Huh?")
+    }
+
+    if (m.message && m.body === `${"@" + global.owner}`) {
+      m.reply("Why did you tag my owner?")
+    }
+
     if (m) {
       let user,
         stats = db.data.stats,

@@ -5,9 +5,6 @@ export default {
   name: "instagram",
   tags: "download",
 
-  owner: false,
-  loading: true,
-
   run: async (m) => {
     const Url = m.args[0];
 

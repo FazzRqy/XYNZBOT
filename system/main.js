@@ -67,6 +67,7 @@ async function start() {
   const conn = baileys.default({
     logger,
     printQRInTerminal: false,
+    version: [2, 3000, 1015901307],
     auth: {
       creds: state.creds,
       keys: baileys.makeCacheableSignalKeyStore(

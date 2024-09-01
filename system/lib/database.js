@@ -98,8 +98,8 @@ export default class Database {
         regTime: -1,
         warn: 0,
 
-        limit: 50,
-        glimit: 30,
+        limit: 10,
+        glimit: 20,
         balance: 0,
         exp: 100,
         level: 1,
@@ -208,9 +208,8 @@ export default class Database {
         autoread: false,
         gconly: false,
         pconly: false,
-        queque: false,
+        queque: true,
         self: false,
-        sticker_cmd: [],
       };
     }
   }

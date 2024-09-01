@@ -4,6 +4,7 @@ export default {
   tags: "owner",
 
   owner: true,
+  admin: true,
 
   run: async (m) => {
     try {

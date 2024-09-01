@@ -1,10 +1,9 @@
+import axios from "axios";
 export default {
     command: ["play", "ytplay"],
     description: "Download youtube audio using query",
     name: "play",
     tags: "download",
-
-    loading: true,
 
     run: async (m, { text }) => {
         const qy = text
@@ -20,7 +19,7 @@ export default {
         let response
 
         try {
-            response = await func.fetchJson(urlApi)
+            response = await axios.get(urlApi)
         } catch (error) {
             console.log(error)
             m.reply("error", error)
@@ -29,7 +28,8 @@ export default {
         if (response.status == 'false') throw 'Fetch Error/Failed'
 
         const { title, channel, thumbnail, duration, views, publish } = response
-        const { url } = response.data
+
+        let thumb = thumbnail
 
         console.log(response.data)
 
@@ -41,17 +41,16 @@ channel: ${channel || "Unknown"}
 publish: ${publish || "Unknown"}
         `
 
-        const sendFile = url
+        const sendFile = response.data.url
 
         console.log(sendFile)
 
         try {
-            await m.reply( thumbnail,  { caption: replyText } )
-            await m.reply( sendFile, { mimetype: "audio/mpeg" })
+            await m.reply( thumb,  { caption: replyText } )
+            await m.reply( sendFile, { caption: "Done", mimetype: "audio/mpeg" })
         } catch (err) {
-            m.reply("There was a slight problem while sending the audio.")
+            m.reply("Error: " + err)
             console.error(err);
         }
     }
-
     }

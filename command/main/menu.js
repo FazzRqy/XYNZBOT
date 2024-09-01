@@ -8,6 +8,40 @@ export default {
     const selectedCategory = args[0];
 
     if (!selectedCategory) {
+      if (m.isOwner == true) {
+        let body =
+      "Hello *" + "Master " + m.pushName + "*\n\n\n_*" + ucapan + "*_\n\n\n`thank you, you are still using me, I'm very happy to serve you, Master!`\n\n";
+
+      const categories = new Set();
+
+      for (const [filePath, command] of Object.entries(global.plugins)) {
+        const cmd = command.default || command;
+        if (
+          !cmd ||
+          !cmd.command ||
+          !Array.isArray(cmd.command) ||
+          !cmd.command[0]
+        ) {
+          continue;
+        }
+
+        const category = cmd.tags || "General";
+        categories.add(category);
+      }
+
+      const sections = [
+        {
+          title: "Categories",
+          rows: Array.from(categories).map((category) => ({
+            title: category,
+            id: `.menu ${category}`,
+            description: `View commands in the ${category} category`,
+          })),
+        },
+      ];
+
+      return conn.sendListM(m.chat, body,"Love you " + m.pushName + " Cyuu >.<\n\n" + wm, sections, "", m);
+    } else {
       let body =
       "Hello *" + m.pushName + "*\n\n\n_*" + ucapan + "*_\n\n\n`thank you for using this bot, but This Bot is still being developed, so, some features may still have errors`\n\n";
 
@@ -40,6 +74,7 @@ export default {
       ];
 
       return conn.sendListM(m.chat, body,"Made with love by " + global.name + "\n\n" + wm, sections, "", m);
+    }
     } else {
       let body = `Commands in the ${selectedCategory} category:\n\n`;
 

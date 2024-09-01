@@ -35,9 +35,23 @@ global.msg = {
     "Seems to have encountered an unexpected error, please repeat your command for a while again",
   quoted: "Reply message...",
   wait: "Wait a minute...",
+  loading: "Loading...",
+  searching: "Searching...",
   urlInvalid: "Url Invalid",
   notFound: "Result Not Found!",
+  putLink: "where the link?",
+  dlloading: "Downloading...",
 };
+
+global.number = { //using for donation, put your phone number here!
+  Axis: "6283852515287", //your phone number 1
+  Tri: "6289653007306", //your phone number 2 (opsional)
+}
+
+global.linkDonate = {  //using for donation, put your link donate here!
+  saweria: "",
+  trakteer: "https://trakteer.id/FazzRqy/tip",
+}
 
 global.APIs = {
   arifzyn: "https://api.arifzyn.tech",
@@ -53,13 +67,13 @@ global.APIs = {
 };
 
 global.APIKeys = {
-  arifzyn: process.env.APIKEY || "",
+  arifzyn: process.env.APIKEY || "AR-ijOFnLz2WubH",
   itsrose: process.env.ROSE_KEY || "",
-  lolhuman: "",
+  lolhuman: "3739aad6ad06d7d171cf369b",
   xyro: "xyroKey",
   nyxs: process.env.APIKEY || "",
   agatz: process.env.APIKEY || "",
-  neoxr: process.env.APIKEY || "",
+  neoxr: process.env.APIKEY || "RELLZBOT",
 };
 
 global.API = (name, path = "/", query = {}, apikeyqueryname) => {

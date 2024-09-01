@@ -5,8 +5,6 @@ export default {
     name: "ytv",
     tags: "download",
 
-    loading: true,
-
     run: async (m) => {
         const Url = m.args[0]
         const apikeys = global.APIKeys.neoxr

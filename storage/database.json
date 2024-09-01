@@ -3785,7 +3785,7 @@
       "limit": 50,
       "glimit": 30,
       "balance": 0,
-      "exp": 3542,
+      "exp": 3661,
       "level": 1,
       "hit": 0,
       "lastclaim": 0,
@@ -3827,7 +3827,7 @@
       "limit": 50,
       "glimit": 30,
       "balance": 0,
-      "exp": 18086,
+      "exp": 18295,
       "level": 1,
       "hit": 0,
       "lastclaim": 0,
@@ -3997,7 +3997,7 @@
       "limit": 50,
       "glimit": 30,
       "balance": 0,
-      "exp": 4058,
+      "exp": 4064,
       "level": 1,
       "hit": 0,
       "lastclaim": 0,
@@ -4981,7 +4981,7 @@
       "limit": 50,
       "glimit": 30,
       "balance": 0,
-      "exp": 416,
+      "exp": 456,
       "level": 1,
       "hit": 0,
       "lastclaim": 0,
@@ -5760,7 +5760,7 @@
       "limit": 50,
       "glimit": 30,
       "balance": 0,
-      "exp": 6738,
+      "exp": 6741,
       "level": 1,
       "hit": 0,
       "lastclaim": 0,
@@ -13286,6 +13286,20 @@
       "simi": false,
       "viewonce": false,
       "welcome": true
+    },
+    "120363295122310961@g.us": {
+      "antibot": false,
+      "antidelete": true,
+      "antilink": false,
+      "antispam": false,
+      "antitoxic": false,
+      "detect": true,
+      "expired": 0,
+      "isBanned": false,
+      "nsfw": false,
+      "simi": false,
+      "viewonce": false,
+      "welcome": true
     }
   },
   "stats": {
@@ -13366,6 +13380,18 @@
       "success": 3,
       "last": 1720970149131,
       "lastSuccess": 1720970149131
+    },
+    "/home/fazzrqy/XYNZBOTRELLZ/command/utility/afk.js": {
+      "total": 35,
+      "success": 35,
+      "last": 1723364846792,
+      "lastSuccess": 1723364846792
+    },
+    "/home/fazzrqy/XYNZBOTRELLZ/command/wattpad/wattpadSearch.js": {
+      "total": 27,
+      "success": 27,
+      "last": 1724528786254,
+      "lastSuccess": 1724528786254
     }
   },
   "msgs": {},
@@ -13376,6 +13402,7 @@
     "gconly": false,
     "pconly": false,
     "queque": false,
-    "self": false
+    "self": false,
+    "sticker_cmd": []
   }
 }

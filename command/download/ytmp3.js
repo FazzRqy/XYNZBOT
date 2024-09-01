@@ -5,8 +5,6 @@ export default {
     name: "yta",
     tags: "download",
 
-    loading: true,
-
     run: async (m, { conn }) => {
         
         const Url = m.args[0]

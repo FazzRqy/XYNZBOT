@@ -4,8 +4,6 @@ export default {
     name: "fbdl",
     tags: "download",
 
-    loading: true,
-
     run: async (m, { conn }) => {
         
         const Url = m.args[0]

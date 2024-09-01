@@ -1,69 +1,122 @@
 export default {
-  command: ["tiktok", "tt"],
-  description: "Download TikTok video",
-  example: "Contoh: %p%cmd <TikTok URL>", //%p = prefix, %cmd = command, %text = teks
+  command: ["tt", "tiktok"],
   name: "tiktok",
   tags: "download",
-
-  loading: true,
-
-  run: async (m, { conn }) => {
-    const url = m.args[0];
-
-    if (!func.isUrl(url))
-      return m.reply(
-        `Invalid URL\n\nContoh: ${m.prefix + m.command} https://vm.tiktok.com/ZSY5tdEQW/`,
-      );
-
-    const apiTypes = ["", "v2", "v3"];
-    let response;
-
-    for (const type of apiTypes) {
-      let apiUrl;
-      if (type) {
-        apiUrl = API("itzpire", "/download/tiktok", { url: url, type: type });
-      } else {
-        apiUrl = API("itzpire", "/download/tiktok", { url: url });
-      }
-
-      console.log(apiUrl);
+  
+  run: async (m) => {
+    
+    if (!m.args[0]) {
+      setTimeout(() => {
+        m.reply(`download tiktok video, audio & image",
+  example: "Please put tiktok link\n\nIf you want to download TikTok audio or images, add the words audio/image after you paste the link\n\n example:\n${m.prefix + m.command} https://vm.tiktok.com/ZSYWAJDRP/ video`)
+      }, 1500)
+    }
+    
+    if (m.args[1] == "audio") {
+      const url = m.args[0]
+      
+      const apikeys = global.APIKeys.neoxr
+      
+      const ApiUrl = `${global.APIs.neoxr}/api/tiktok?url=${url}&apikey=${apikeys}`
+      
+      let response
+      
       try {
-        response = await func.fetchJson(apiUrl);
-        if (response.status === "success") {
-          break; // Break the loop if a successful response is received
-        }
+        response = await func.fetchJson(ApiUrl)
       } catch (err) {
-        console.error(`Error with type ${type}:`, err);
+        console.log(err)
+      }
+      
+      if (!response.data) throw "Sorry error, please make sure you put the correct link!"
+      
+      const audio = response.data.audio
+      const txt = response.caption
+      
+      try {
+        await m.reply(audio, { mimetype: "audio/mpeg" })
+        m.reply("*" + txt + "*" + "\n\n\nIf you want to download TikTok images or video, add the image/video after you paste the TikTok link that you copied earlier.")
+      } catch (e) {
+        m.reply(e)
+        console.log(e)
+      }
+    } else if (m.args[1] == "image") {
+      const url = m.args[0]
+      
+      const apikeys = global.APIKeys.neoxr
+      
+      const ApiUrl = `${global.APIs.neoxr}/api/tiktok?url=${url}&apikey=${apikeys}`
+      
+      let response
+      
+      try {
+        response = await func.fetchJson(ApiUrl)
+      } catch (err) {
+        console.log(err)
+      }
+      
+      if (!response.data) throw "Sorry error, please make sure you put the correct link!"
+      
+      const image = response.data.image
+      const txt = response.caption
+      
+      try {
+        await m.reply(image, { caption: "*" + txt + "*" + "\n\n\nIf you want to download TikTok audio or video, add the audio/video after you paste the TikTok link that you copied earlier." })
+      } catch (e) {
+        m.reply(e)
+        console.log(e)
+      }
+    } else if (m.args[1] == "video") {
+      const url = m.args[0]
+      
+      const apikeys = global.APIKeys.neoxr
+      
+      const ApiUrl = `${global.APIs.neoxr}/api/tiktok?url=${url}&apikey=${apikeys}`
+      
+      let response
+      
+      try {
+        response = await func.fetchJson(ApiUrl)
+      } catch (err) {
+        console.log(err)
+      }
+      
+      if (!response.data) throw "Sorry error, please make sure you put the correct link!"
+      
+      const video = response.data.video
+      const txt = response.caption
+      
+      try {
+        await m.reply(video, { caption: "*" + txt + "*" + "\n\n\nIf you want to download TikTok images or audio, add the image/audio after you paste the TikTok link that you copied earlier." })
+      } catch (e) {
+        m.reply(e)
+        console.log(e)
+      }
+    } else {
+      const url = m.args[0]
+      
+      const apikeys = global.APIKeys.neoxr
+      
+      const ApiUrl = `${global.APIs.neoxr}/api/tiktok?url=${url}&apikey=${apikeys}`
+      
+      let response
+      
+      try {
+        response = await func.fetchJson(ApiUrl)
+      } catch (err) {
+        console.log(err)
+      }
+      
+      if (!response.data) throw "Sorry error, please make sure you put the correct link!"
+      
+      const video = response.data.video
+      const txt = response.caption
+      
+      try {
+        await m.reply(video, { caption: "*" + txt + "*" + "\n\n\nIf you want to download TikTok images or audio, add the image/audio after you paste the TikTok link that you copied earlier." })
+      } catch (e) {
+        m.reply(e)
+        console.log(e)
       }
     }
-
-    if (!response || response.status !== "success" || !response.data) {
-      return m.reply("Failed to fetch TikTok video.");
-    }
-
-    console.log(response);
-
-    const { desc, author, statistics, video, music } =
-      response.data;
-    const videoUrl = video ;
-
-    if (!videoUrl) {
-      return m.reply("Video URL not found.");
-    }
-
-    const replyText = `
-*Description:* ${desc || "No description"}
-*Author:* ${author?.nickname || "Unknown"}
-*Likes:* ${statistics?.likeCount || "0"}
-*Comments:* ${statistics?.commentCount || "0"}
-*Shares:* ${statistics?.shareCount || "0"}
-    `;
-
-    try {
-      await m.reply(videoUrl, { caption: replyText, mimetype: "video/mp4" });
-    } catch (err) {
-      console.error(err);
-      m.reply("An error occurred while sending the TikTok video.");
-    }
-  },
-};
+  }
+}
