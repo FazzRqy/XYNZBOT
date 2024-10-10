@@ -12,6 +12,8 @@ export default {
         m.reply(`example: ${m.prefix + m.command} night changes`)
       }, 1000)
     } else {
+      m.reply(global.msg.loading)
+
       const title = text
       
       const ApiUrl = `https://api.nyxs.pw/tools/lirik?title=${encodeURIComponent(title)}`
@@ -27,13 +29,7 @@ export default {
       let hasil = response.result
 
       if (hasil) {
-      
-      try {
         await m.reply(`lyrics of ${title}\n\n` + hasil)
-      } catch (err) {
-        m.reply(err)
-        console.error(err)
-      }
       } else {
         await m.reply(response.message)
     }

@@ -13398,11 +13398,10 @@
   "sticker": {},
   "settings": {
     "anticall": true,
-    "autoread": false,
+    "autoread": true,
     "gconly": false,
     "pconly": false,
     "queque": false,
-    "self": false,
-    "sticker_cmd": []
+    "self": false
   }
 }

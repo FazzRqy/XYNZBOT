@@ -1,16 +1,20 @@
-import axios from "axios";
 export default {
     command: ["play", "ytplay"],
     description: "Download youtube audio using query",
     name: "play",
     tags: "download",
 
+    loading: false,
+
     run: async (m, { text }) => {
         const qy = text
         const Apikeys = global.APIKeys.neoxr
         const URLApi = global.APIs.neoxr
 
-        if (!qy) throw global.msg.noText + `\n\n Example: ${ m.prefix + m.command } Doja - Central Cee`
+        if (!qy) {
+            await m.reply(`Example: ${ m.prefix + m.command } Doja - Central Cee`)
+        } else {
+            m.reply(global.msg.searching)
 
         const urlApi = `${URLApi + '/api/play?q=' + encodeURIComponent(qy) + '&apikey=' + Apikeys}`
 
@@ -19,13 +23,13 @@ export default {
         let response
 
         try {
-            response = await axios.get(urlApi)
+            response = await func.fetchJson(urlApi)
         } catch (error) {
             console.log(error)
             m.reply("error", error)
         }
 
-        if (response.status == 'false') throw 'Fetch Error/Failed'
+        if (response.status == false) throw 'Fetch Error/Failed'
 
         const { title, channel, thumbnail, duration, views, publish } = response
 
@@ -41,16 +45,17 @@ channel: ${channel || "Unknown"}
 publish: ${publish || "Unknown"}
         `
 
-        const sendFile = response.data.url
+        const sendFile = await response.data.url
 
         console.log(sendFile)
 
         try {
-            await m.reply( thumb,  { caption: replyText } )
-            await m.reply( sendFile, { caption: "Done", mimetype: "audio/mpeg" })
+            m.reply( thumb,  { caption: replyText, mimetype: "image/jpeg" } )
+            m.reply( sendFile, { caption: "Done", mimetype: "audio/mpeg" })
         } catch (err) {
             m.reply("Error: " + err)
             console.error(err);
         }
+    }
     }
     }

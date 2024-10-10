@@ -7,10 +7,14 @@ export default {
   run: async (m, { conn, args }) => {
     const selectedCategory = args[0];
 
+    let date = new Date().toLocaleString('en', {timeZone: "Asia/Jakarta"})
+    let dateParts = date.split(", ")[0];
+
+
     if (!selectedCategory) {
       if (m.isOwner == true) {
         let body =
-      "Hello *" + "Master " + m.pushName + "*\n\n\n_*" + ucapan + "*_\n\n\n`thank you, you are still using me, I'm very happy to serve you, Master!`\n\n";
+      "Hello *" + "Master " + m.pushName + "*\n\n\n_*" + ucapan + "*_" + `\n\n*Time now: ${func.timeNow()}*` + `\n\n*Current Date: ${func.tanggal(dateParts, "Asia/Jakarta")}*` + "\n\n\n`thank you, you are still using me, I'm very happy to serve you, Master!`\n\n";
 
       const categories = new Set();
 
@@ -43,7 +47,7 @@ export default {
       return conn.sendListM(m.chat, body,"Love you " + m.pushName + " Cyuu >.<\n\n" + wm, sections, "", m);
     } else {
       let body =
-      "Hello *" + m.pushName + "*\n\n\n_*" + ucapan + "*_\n\n\n`thank you for using this bot, but This Bot is still being developed, so, some features may still have errors`\n\n";
+      "Hello *" + m.pushName + "*\n\n\n_*" + ucapan + `*_\n\n*Time now: ${func.timeNow()}*` + `\n\n*Current Date: ${func.tanggal(dateParts, "Asia/Jakarta")}*` + `\n\n\n\`thank you for using this bot, but This Bot is still being developed, so, some features may still have errors\`\n If the bot have some error type ${m.prefix}report *text*\n`;
 
       const categories = new Set();
 

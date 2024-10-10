@@ -4,15 +4,15 @@ import { fileURLToPath } from "url";
 import Function from "../system/lib/function.js";
 
 //—————「 Setings your bot 」—————//
-global.name = "Zaikky Farel Aldino Zahran";
-global.wm = "XYNZBOT";
+global.name = "Zaikky Farel Aldino Zahran"; // your name
+global.wm = "XYNZBOT"; // your bot name
 
-global.author = "Zaikky Farel Aldino Zahran";
+global.author = "Zaikky Farel Aldino Zahran"; // author name
 global.packname = "Created Sticker By";
-global.link = "https://github.com/fazzrqy";
+global.link = "https://github.com/fazzrqy"; //your github (if you have)
 
-global.owner = ["6289653007306"];
-global.pairingNumber = "6283852515287";
+global.owner = [""]; // your number owner
+global.pairingNumber = ""; //your bot number
 
 global.prefix = /^[°•π÷×¶∆£¢€¥®™+✓_=|/~!?@#%^&.©^]/i;
 global.thumbnail = fs.readFileSync("./storage/media/images.jpg");
@@ -67,12 +67,8 @@ global.APIs = {
 };
 
 global.APIKeys = {
-  arifzyn: process.env.APIKEY || "",
-  itsrose: process.env.ROSE_KEY || "",
   lolhuman: "",
-  xyro: "",
   nyxs: process.env.APIKEY || "",
-  agatz: process.env.APIKEY || "",
   neoxr: process.env.APIKEY || "",
 };
 

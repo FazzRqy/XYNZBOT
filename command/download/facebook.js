@@ -9,11 +9,18 @@ export default {
         const Url = m.args[0]
         const apikeys = global.APIKeys.neoxr
 
-        if (!func.isUrl(Url))
-        return m.reply(
-            `Invalid URL\n\nContoh: ${m.prefix + m.command} https://www.facebook.com/reel/986009916077834?mibextid=xCPwDs&s=yWDuG2&fs=e`,
-        );
-        
+        if (!Url) {
+            m.reply(`Invalid URL\n\nContoh: ${m.prefix + m.command} https://www.facebook.com/reel/986009916077834?mibextid=xCPwDs&s=yWDuG2&fs=e`,);
+        } else {
+
+            let cekUrl = /https:\/\/(www\.)?facebook\.com\/.*/
+
+            let match = Url.match(cekUrl)
+
+            if (!match) {
+                m.reply("Make sure you put a Facebook URL, not the other URL!")
+            } else {
+
         const ApiUrl = `https://api.neoxr.eu/api/fb?url=${encodeURIComponent(Url)}&apikey=${apikeys}`
 
         console.log(ApiUrl);
@@ -32,6 +39,9 @@ export default {
 
         console.log(url)
 
+        if (url == false) {
+            m.reply("error, Make sure you put a correct url/link!")
+        } else {
         let sendFile = url
 
         try {
@@ -40,11 +50,15 @@ export default {
             m.reply("There was a slight problem while sending the video.")
             console.error(err);
         }
+    }
     } else if (m.args[1] === '--sd') {
         let url = response.data[0].url
 
         console.log(url)
 
+        if (url == false) {
+            m.reply("error, Make sure you put a correct url/link!")
+        } else {
         let sendFile = url
 
         try {
@@ -53,6 +67,7 @@ export default {
             m.reply("There was a slight problem while sending the video.")
             console.error(err);
         }
+    }
     } else {
             let url = response.data[0].url
 
@@ -68,7 +83,8 @@ export default {
                 m.reply("There was a slight problem while sending the video.")
                 console.error(err);
             }
-
     }
     }
+    }
+}
 }

@@ -9,9 +9,9 @@ export default {
 
         if (msg.length > 500) throw 'Sorry, the message is too log, maximum only 500 text!!'
 
-        const number = m.sender
-
-        const rprt = `*[REPORT]*\nNumber: @${number.split('@s.whatsapp.net')[0]}\nMessage: ${msg}`
+        const sender = m.sender
+        const number = sender.split("@s.whatsapp.net")[0]
+        const rprt = `*[REPORT]*\n*Number:* wa.me/${number}\n*Message:* \`\`\`${msg}\`\`\``
 
         const option = {
             text: rprt,

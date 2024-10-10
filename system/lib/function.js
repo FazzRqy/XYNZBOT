@@ -351,6 +351,12 @@ export default new (class Function {
     });
   }
 
+  timeNow(locate = "id", timezone = "Asia/Jakarta") {
+    const timeOption = {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false};
+    const timeString = new Date().toLocaleTimeString(`${locate}`, {timeZone: `${timezone}`, ...timeOption});
+    return timeString;
+  }
+
   runtime(seconds) {
     seconds = Number(seconds);
     var d = Math.floor(seconds / (3600 * 24));
@@ -428,13 +434,13 @@ export default new (class Function {
     let ucapanWaktu = "";
     let wakt = moment.tz("Asia/Jakarta").format("HH:mm");
 
-    if (wakt < "23:59") ucapanWaktu = "Selamat Malam";
-    if (wakt < "19:00") ucapanWaktu = "Selamat Petang";
-    if (wakt < "18:00") ucapanWaktu = "Selamat Sore";
-    if (wakt < "15:00") ucapanWaktu = "Selamat Siang";
-    if (wakt < "10:00") ucapanWaktu = "Selamat Pagi";
-    if (wakt < "05:00") ucapanWaktu = "Selamat Subuh";
-    if (wakt < "03:00") ucapanWaktu = "Selamat Tengah Malam";
+    if (wakt < "23:59") ucapanWaktu = "Good Evening / Selamat Malam";
+    if (wakt < "19:00") ucapanWaktu = "Good Afternoon / Selamat Petang";
+    if (wakt < "18:00") ucapanWaktu = "Good Afternoon / Selamat Sore";
+    if (wakt < "15:00") ucapanWaktu = "Good Afternoon / Selamat Siang";
+    if (wakt < "10:00") ucapanWaktu = "Good Morning / Selamat Pagi";
+    if (wakt < "05:00") ucapanWaktu = "Early Morning / Selamat Subuh";
+    if (wakt < "03:00") ucapanWaktu = "Good Midnight / Selamat Tengah Malam";
 
     return ucapanWaktu;
   }

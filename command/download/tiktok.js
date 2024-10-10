@@ -4,17 +4,21 @@ export default {
   tags: "download",
   
   run: async (m) => {
+
+    const url = m.args[0]
+    const qy = m.args[1]
+    if (!url) {
+        m.reply(`example: ${m.prefix + m.command} https://vm.tiktok.com/ZSYWAJDRP/ video`)
+    } else {
+
+      let cekUrl = /https:\/\/(www\.|vm\.|vt\.)?tiktok\.com\/.*/
+      let match = url.match(cekUrl)
+      if (!match) {
+        m.reply("Make sure you put the url correcly!")
+    } else {
     
-    if (!m.args[0]) {
-      setTimeout(() => {
-        m.reply(`download tiktok video, audio & image",
-  example: "Please put tiktok link\n\nIf you want to download TikTok audio or images, add the words audio/image after you paste the link\n\n example:\n${m.prefix + m.command} https://vm.tiktok.com/ZSYWAJDRP/ video`)
-      }, 1500)
-    }
-    
-    if (m.args[1] == "audio") {
-      const url = m.args[0]
-      
+    if (qy == "audio") {
+      m.reply(global.msg.dlloading)
       const apikeys = global.APIKeys.neoxr
       
       const ApiUrl = `${global.APIs.neoxr}/api/tiktok?url=${url}&apikey=${apikeys}`
@@ -34,13 +38,12 @@ export default {
       
       try {
         await m.reply(audio, { mimetype: "audio/mpeg" })
-        m.reply("*" + txt + "*" + "\n\n\nIf you want to download TikTok images or video, add the image/video after you paste the TikTok link that you copied earlier.")
+        m.reply(txt + "\n\n\n```If you want to download TikTok images or video, add the image/video after you paste the TikTok link that you copied earlier.```")
       } catch (e) {
         m.reply(e)
         console.log(e)
       }
-    } else if (m.args[1] == "image") {
-      const url = m.args[0]
+    } else if (qy == "image") {
       
       const apikeys = global.APIKeys.neoxr
       
@@ -60,14 +63,12 @@ export default {
       const txt = response.caption
       
       try {
-        await m.reply(image, { caption: "*" + txt + "*" + "\n\n\nIf you want to download TikTok audio or video, add the audio/video after you paste the TikTok link that you copied earlier." })
+        await m.reply(image, { caption: txt + "\n\n\nIf you want to download TikTok audio or video, add the audio/video after you paste the TikTok link that you copied earlier." })
       } catch (e) {
         m.reply(e)
         console.log(e)
       }
-    } else if (m.args[1] == "video") {
-      const url = m.args[0]
-      
+    } else if (qy == "video") {
       const apikeys = global.APIKeys.neoxr
       
       const ApiUrl = `${global.APIs.neoxr}/api/tiktok?url=${url}&apikey=${apikeys}`
@@ -86,13 +87,12 @@ export default {
       const txt = response.caption
       
       try {
-        await m.reply(video, { caption: "*" + txt + "*" + "\n\n\nIf you want to download TikTok images or audio, add the image/audio after you paste the TikTok link that you copied earlier." })
+        await m.reply(video, { caption: txt + "\n\n\nIf you want to download TikTok images or audio, add the image/audio after you paste the TikTok link that you copied earlier." })
       } catch (e) {
         m.reply(e)
         console.log(e)
       }
     } else {
-      const url = m.args[0]
       
       const apikeys = global.APIKeys.neoxr
       
@@ -112,11 +112,13 @@ export default {
       const txt = response.caption
       
       try {
-        await m.reply(video, { caption: "*" + txt + "*" + "\n\n\nIf you want to download TikTok images or audio, add the image/audio after you paste the TikTok link that you copied earlier." })
+        await m.reply(video, { caption: txt + "\n\n\nIf you want to download TikTok images or audio, add the image/audio after you paste the TikTok link that you copied earlier." })
       } catch (e) {
         m.reply(e)
         console.log(e)
       }
     }
+  }
+  }
   }
 }

@@ -11,8 +11,8 @@ export default {
   run: async (m, { conn }) => { // Menambahkan global untuk akses ke plugins
 
     try {
-      if (!m.isOwner) return;
-      if (m.isBaileys) return;
+      // if (!m.isOwner) return;
+      // if (m.isBaileys) return;
       if (m.message && m.isOwner && m.quoted && m.quoted.message.stickerMessage && m.quoted.message.stickerMessage.fileSha256) {
         const buffer = Buffer.from(m.quoted.message.stickerMessage.fileSha256);
         const sha256Hash = crypto.createHash('sha256').update(buffer).digest('hex');

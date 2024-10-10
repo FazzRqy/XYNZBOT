@@ -4,12 +4,17 @@ export default {
     name: "LeaveGc",
     tags: "owner",
 
-    owner: true,
     group: true,
 
     run: async (m) => {
-        await m.reply('Adios Amigos')
+        if (global.owner) {
+            await m.reply('```GoodBye, see you next Time!```')
+            conn.groupLeave(m.chat)
+        
+        } else if (m.isAdmin == true) {
+        await m.reply('```GoodBye, see you next Time!```')
 
-        await conn.groupLeave(m.chat)
-    },
+            conn.groupLeave(m.chat)
+    } else throw "Sorry, this features only can access by admin and owner";
+    }
 }

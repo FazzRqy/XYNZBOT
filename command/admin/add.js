@@ -1,6 +1,5 @@
 export default {
     command: ["add", "tambahkan"],
-    example: "Example: %padd 628XXXXXXXX",
     description: "add user to group",
     name: "add",
     tags: "admin",
@@ -10,6 +9,8 @@ export default {
     group: true,
 
     run: async (m, { text }) => {
+
+        if (!m.args[0]) throw `Example: ${m.prefix + m.command} *62XXXXXXXXX*`
 
         let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
 

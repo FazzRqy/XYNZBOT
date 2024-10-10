@@ -1,15 +1,26 @@
 export default {
     command: ["ytmp3", "yta"],
     description: "Download youtube audio",
-    example: "Contoh: %p%cmd <Youtube URL>", //%p = prefix, %cmd = command, %text = teks
     name: "yta",
     tags: "download",
 
     run: async (m, { conn }) => {
-        
         const Url = m.args[0]
         const apikeys = global.APIKeys.neoxr
         
+        if (!Url) {
+            m.reply(global.msg.putLink)
+        } else {
+
+            let cekUrl = /https:\/\/(www\.|m\.)?(youtube|youtu)(\.com|\.be)\/.*/
+
+            let match = Url.match(cekUrl)
+
+            if (!match) {
+                m.reply("Make sure you put a youtube URL, not the other URL!")
+            } else {
+
+            m.reply(global.msg.dlloading)
         const ApiUrl = `https://api.neoxr.eu/api/youtube?url=${encodeURIComponent(Url)}&type=audio&quality=128kbps&apikey=${apikeys}`
 
         console.log(ApiUrl)
@@ -41,11 +52,13 @@ publish: ${publish || "Unknown"}
         console.log(sendFile)
 
         try {
-            await m.reply( thumbnail,  { caption: replyText } )
+            await m.reply( thumbnail,  { caption: replyText, mimetype: "image/jpeg"} )
             await m.reply( sendFile, { mimetype: "audio/mpeg" })
         } catch (err) {
             m.reply("There was a slight problem while sending the audio.")
             console.error(err);
         }
+    }
+}
     }
 }
