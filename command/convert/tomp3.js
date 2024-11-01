@@ -7,9 +7,9 @@ export default {
   loading: true,
   
   run: async (m) => {
-    const video = await m.quoted.download();
+    if (!m.quoted || m.quoted.mime !== "video/mp4") return m.reply("\`\`\`Reply or send video not sticker or image\`\`\`");
     
-    if (!video || m.quoted.mime !== "video/mp4") return m.reply("\`\`\`Reply or send video not sticker or image\`\`\`");
+    const video = await m.quoted.download();
     
     try {
       await m.reply(video, {mimetype: "audio/mpeg"});
