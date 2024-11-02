@@ -2,7 +2,7 @@ export default {
   command: ["aianime", "aanime", "ainime", "aanim", "anim"],
   description: "create picture anime with ai",
   name: "aianime",
-  tags: "ai",
+  tags: "anime",
   
   loading: true,
   

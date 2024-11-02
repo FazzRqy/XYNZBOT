@@ -2,7 +2,7 @@ export default {
   command: ["waifudiff", "waidiff", "widiff", "wiff"],
   description: "generate waifu using ai",
   name: "waifudiff",
-  tags: "ai",
+  tags: "anime",
   
   loading: true,
   owner: true,
