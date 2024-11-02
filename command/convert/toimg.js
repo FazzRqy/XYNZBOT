@@ -8,10 +8,10 @@ export default {
     
     run: async (m) => {
         if (!m.quoted || m.quoted.mime !== "image/webp") return setTimeout(() => { m.reply("\`\`\`Reply a sticker image\`\`\`"); }, 1000);
-        const video = await m.quoted.download();
+        const Simage = await m.quoted.download();
 
         try {
-            await m.reply(video, {mimetype: "image/jpeg"});
+            await m.reply(Simage, {mimetype: "image/jpeg"});
         } catch (err) {
             m.reply("Error");
             console.log(err);
