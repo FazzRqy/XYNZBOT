@@ -8,33 +8,28 @@ export default {
   
   run: async (m, { text }) => {
     
-    if (!text) {
-      setTimeout(() => {
-        m.reply(`input the query\nExample:\n\n ${m.prefix + m.command} AK-47`)
-      }, 1000)
-    } else {
-    const q = text
+    if (!text) return setTimeout(() => { m.reply(`Example:\n\n ${m.prefix + m.command} blue sky view with lost of hills`); }, 1000);
+    const query = text
     
-    const apikey = global.APIKeys.neoxr
+    const apikey = global.APIKeys.neoxr;
     
-    const ApiUrl = `${global.APIs.neoxr}/api/ai-anime?q=${encodeURIComponent(q)}&apikey=${apikey}`
+    const ApiUrl = `${global.APIs.neoxr}/api/ai-anime?q=${encodeURIComponent(query)}&apikey=${apikey}`;
     
-    let response
+    let response;
     
     try {
-      response = await func.fetchJson(ApiUrl)
+      response = await func.fetchJson(ApiUrl);
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
     
-    const image = response.data.url
+    const image = response.data.url;
     
     try {
-      await m.reply(image, { caption: "Done", mimetype: "image/jpeg" })
+      await m.reply(image, { mimetype: "image/jpeg" });
     } catch (err) {
-      m.reply(err)
-      console.error(err)
-    }
-    }
-  }
-}
+      m.reply(err);
+      console.error(err);
+    };
+    },
+  };
