@@ -7,7 +7,7 @@ export default {
     run: async (m) => {
         const URL = m.args[0];
         const apikey = global.APIKeys.neoxr;
-        const scRegex = /https:\/\/(www\.)?soundcloud\.com\/.*/
+        const scRegex = /https:\/\/?soundcloud\.com\/.*/
         let response;
 
         if (!URL || scRegex !== URL) return m.reply(`Put a soundCloud url. Example: ${m.prefix + m.command} *SoundCloud url*`);
